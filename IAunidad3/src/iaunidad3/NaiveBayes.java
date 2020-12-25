@@ -19,7 +19,7 @@ public class NaiveBayes {
 
     public NaiveBayes() throws FileNotFoundException {
         this.reader = new ReadFile("breast-cancer-wisconsin.data");
-
+        this.tables = new ArrayList<>();
     }
 
     public void createTables(){

@@ -18,6 +18,7 @@ public class Menu {
     private NaiveBayes naiveBayes;
     public Menu() throws FileNotFoundException {
         this.naiveBayes = new NaiveBayes();
+        this.naiveBayes.createTables();
         this.menuOfOptions();
     }
     
