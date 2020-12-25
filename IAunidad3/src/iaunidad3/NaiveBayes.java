@@ -18,7 +18,7 @@ public class NaiveBayes {
     private ArrayList<FrequencyTable> tables;
 
     public NaiveBayes() throws FileNotFoundException {
-        this.reader = new ReadFile("file");
+        this.reader = new ReadFile("breast-cancer-wisconsin.data");
 
     }
 
@@ -51,6 +51,24 @@ public class NaiveBayes {
         }
         return result;
     }
+
+    public ReadFile getReader() {
+        return reader;
+    }
+
+    public void setReader(ReadFile reader) {
+        this.reader = reader;
+    }
+
+    public ArrayList<FrequencyTable> getTables() {
+        return tables;
+    }
+
+    public void setTables(ArrayList<FrequencyTable> tables) {
+        this.tables = tables;
+    }
+    
+    
 
 
 }

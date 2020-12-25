@@ -22,7 +22,7 @@ public class FrequencyTable {
         this.positiveValues = new int[10];
         this.negativeValues = new int[10];
         this.total = 0;
-        populateTable(data,cases);
+        this.populateTable(data, cases);
     }
 
     public double getProbability(int value){
@@ -118,5 +118,39 @@ public class FrequencyTable {
             this.total+=1;
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int[] getPositiveValues() {
+        return positiveValues;
+    }
+
+    public void setPositiveValues(int[] positiveValues) {
+        this.positiveValues = positiveValues;
+    }
+
+    public int[] getNegativeValues() {
+        return negativeValues;
+    }
+
+    public void setNegativeValues(int[] negativeValues) {
+        this.negativeValues = negativeValues;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
+    
 
 }
