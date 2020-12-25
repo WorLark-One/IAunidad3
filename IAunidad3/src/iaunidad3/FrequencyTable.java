@@ -26,7 +26,7 @@ public class FrequencyTable {
     }
 
     public double getProbability(int value){
-        return 0;
+        return this.positiveValues[value-1]/this.total;
     }
 
     public void populateTable(double[] data, double[] cases){
