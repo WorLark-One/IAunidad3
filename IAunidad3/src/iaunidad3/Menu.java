@@ -5,6 +5,8 @@
  */
 package iaunidad3;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,9 @@ import java.util.Scanner;
  */
 public class Menu {
     private Scanner reader = new Scanner(System.in);
-    public Menu() {
+    private NaiveBayes naiveBayes;
+    public Menu() throws FileNotFoundException {
+        this.naiveBayes = new NaiveBayes();
         this.menuOfOptions();
     }
     
@@ -35,7 +39,7 @@ public class Menu {
                     flag = false;
                     break;
                 case 1:
-                    this.printFrequencyTables();
+                    this.printFrequencyTables(this.naiveBayes.getTables());
                     break;
                 case 2:
                     this.breastCancerScreeningTest();
@@ -54,14 +58,20 @@ public class Menu {
         
     }
     
-    private void printFrequencyTables(){
-        System.out.println("");
+    private void printFrequencyTables(ArrayList<FrequencyTable> tables){
+        System.out.println(" ");
         for (int i = 0; i < 10; i++) {
             this.printAttributeFrequencyTables(i);
             System.out.println(" ");
-            for (int j = 0; j < 10; j++) {
-                System.out.print("tables ");
+            System.out.println("--- Positive Values --- ");
+            for (int j = 0; j < tables.get(i).getPositiveValues().length; j++) {
+                System.out.print(tables.get(i).getPositiveValues()[j]+" ");
             }
+            System.out.println("--- Negative Values --- ");
+            for (int j = 0; j < tables.get(i).getNegativeValues().length; j++) {
+                System.out.print(tables.get(i).getNegativeValues()[j]+" ");
+            }
+            
             System.out.println(" ");
         }
     }
@@ -76,7 +86,9 @@ public class Menu {
             this.printAttributeEnter(i);
             String number = reader.next();
             if (i==9) {
+                flag2 = false;
                 flag3 = true;
+                //System.out.println("");
             }
             while(!this.isNumeric(number,flag2,flag3)){
                 this.printAttributeEnter(i);
@@ -85,6 +97,8 @@ public class Menu {
             int numberAux = Integer.parseInt(number);
             arrayAttributes[i]=numberAux;
         }
+        double result = this.naiveBayes.calculateProbability(arrayAttributes);
+        System.out.println("Probability: "+result);
     }
     
     private void printAttributeEnter(int counter){
