@@ -65,7 +65,7 @@ public class Menu {
             this.printAttributeFrequencyTables(i);
             System.out.println(" ");
             System.out.println("--- Positive Values --- ");
-            System.out.println(tables.get(i).getPositiveValues());
+            //System.out.println(tables.get(i).getPositiveValues());
             for (int j = 0; j < tables.get(i).getPositiveValues().length; j++) {
                 System.out.print(tables.get(i).getPositiveValues()[j]+" ");
             }

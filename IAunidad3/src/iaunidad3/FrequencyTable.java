@@ -28,10 +28,15 @@ public class FrequencyTable {
         this.populateTable(data, cases);
     }
 
-    public double getProbability(int value){        
+    public String getProbability(int value){  
+        System.out.println("pos: "+this.positiveValues[value-1]);
+        //System.out.println(this.negativeValues[value-1]);
+        System.out.println("sum: "+(this.positiveValues[value-1]+this.negativeValues[value-1]));
         double x = (double) this.positiveValues[value-1]/(this.positiveValues[value-1]+this.negativeValues[value-1]) ;
-
-        return (double) Math.round(x*100000000000000000000d) / 100000000000000000000d;
+        String valor = Double.toString(x);
+        // System.out.println("va:"+ x);
+        // System.out.println("String:"+Double.toString(x));
+        return valor;
     }
 
     public void populateTable(double[] data, double[] cases){
@@ -156,6 +161,4 @@ public class FrequencyTable {
         this.total = total;
     }
     
-    
-
 }

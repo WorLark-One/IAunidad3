@@ -47,9 +47,11 @@ public class NaiveBayes {
     public double calculateProbability(int[] newData){
         double result = 0;
         for(int i = 0; i < this.tables.size(); i++){
-            double x = this.tables.get(i).getProbability(newData[i])/9;  
-            result +=x;
-            System.out.println(x);
+            String prob = this.tables.get(i).getProbability(newData[i]);
+            double x = Double.parseDouble(prob);
+            result +=x/9;
+            //System.out.println("llega:"+x);
+            //System.out.println(x);
         }
         return result;
     }
