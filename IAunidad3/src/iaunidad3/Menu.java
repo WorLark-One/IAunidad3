@@ -61,19 +61,20 @@ public class Menu {
     
     private void printFrequencyTables(ArrayList<FrequencyTable> tables){
         System.out.println(" ");
-        for (int i = 0; i < 10; i++) {
-            this.printAttributeFrequencyTables(i);
-            System.out.println(" ");
+        for (int i = 0; i < 9; i++) {
+            System.out.println("------ "+ tables.get(i).getName() + " ------");
             System.out.println("--- Positive Values --- ");
             for (int j = 0; j < tables.get(i).getPositiveValues().length; j++) {
                 System.out.print(tables.get(i).getPositiveValues()[j]+" ");
             }
+            System.out.println();
             System.out.println("--- Negative Values --- ");
             for (int j = 0; j < tables.get(i).getNegativeValues().length; j++) {
                 System.out.print(tables.get(i).getNegativeValues()[j]+" ");
             }
             
             System.out.println(" ");
+            System.out.println();
         }
     }
     
@@ -83,7 +84,7 @@ public class Menu {
         int[] arrayAttributes = new int[10];
         boolean flag2 = true;
         boolean flag3 = false;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             this.printAttributeEnter(i);
             String number = reader.next();
             if (i==9) {
@@ -99,6 +100,7 @@ public class Menu {
             arrayAttributes[i]=numberAux;
         }
         double result = this.naiveBayes.calculateProbability(arrayAttributes);
+        
         System.out.println("Probability: "+result);
     }
     

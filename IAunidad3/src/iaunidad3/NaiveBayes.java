@@ -47,7 +47,9 @@ public class NaiveBayes {
     public double calculateProbability(int[] newData){
         double result = 0;
         for(int i = 0; i < this.tables.size(); i++){
-            result += this.tables.get(i).getProbability(newData[i])/9;
+            double x = this.tables.get(i).getProbability(newData[i])/9;  
+            result +=x;
+            System.out.println(x);
         }
         return result;
     }
