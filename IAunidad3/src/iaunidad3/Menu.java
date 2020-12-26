@@ -62,8 +62,10 @@ public class Menu {
     private void printFrequencyTables(ArrayList<FrequencyTable> tables){
         System.out.println(" ");
         for (int i = 0; i < 9; i++) {
-            System.out.println("------ "+ tables.get(i).getName() + " ------");
+            this.printAttributeFrequencyTables(i);
+            System.out.println(" ");
             System.out.println("--- Positive Values --- ");
+            System.out.println(tables.get(i).getPositiveValues());
             for (int j = 0; j < tables.get(i).getPositiveValues().length; j++) {
                 System.out.print(tables.get(i).getPositiveValues()[j]+" ");
             }
