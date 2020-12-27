@@ -19,7 +19,7 @@ public class NaiveBayes {
 
     public NaiveBayes() throws FileNotFoundException {
         this.reader = new ReadFile("breast-cancer-wisconsin.data");
-
+        this.tables = new ArrayList<>();
     }
 
     public void createTables(){
@@ -47,7 +47,11 @@ public class NaiveBayes {
     public double calculateProbability(int[] newData){
         double result = 0;
         for(int i = 0; i < this.tables.size(); i++){
-            result += this.tables.get(i).getProbability(newData[i])/9;
+            String prob = this.tables.get(i).getProbability(newData[i]);
+            double x = Double.parseDouble(prob);
+            result +=x/9;
+            //System.out.println("llega:"+x);
+            //System.out.println(x);
         }
         return result;
     }

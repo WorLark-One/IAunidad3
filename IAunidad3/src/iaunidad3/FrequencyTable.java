@@ -5,6 +5,7 @@
  */
 package iaunidad3;
 
+import java.text.DecimalFormat;
 
 /**
  *
@@ -13,7 +14,9 @@ package iaunidad3;
 public class FrequencyTable {
 
     private String name;
+    // Quantity of cases that have breast cancer
     private int[] positiveValues;
+    // Quantity of cases that do not have breast cancer
     private int[] negativeValues;
     private int total;
 
@@ -25,15 +28,22 @@ public class FrequencyTable {
         this.populateTable(data, cases);
     }
 
-    public double getProbability(int value){
-        return this.positiveValues[value-1]/this.total;
+    public String getProbability(int value){  
+        System.out.println("pos: "+this.positiveValues[value-1]);
+        //System.out.println(this.negativeValues[value-1]);
+        System.out.println("sum: "+(this.positiveValues[value-1]+this.negativeValues[value-1]));
+        double x = (double) this.positiveValues[value-1]/(this.positiveValues[value-1]+this.negativeValues[value-1]) ;
+        String valor = Double.toString(x);
+        // System.out.println("va:"+ x);
+        // System.out.println("String:"+Double.toString(x));
+        return valor;
     }
 
     public void populateTable(double[] data, double[] cases){
         for( int i = 0; i < data.length; i++){
             switch( (int)data[i]){
                 case 1:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[0]+=1;
                     }
                     else{
@@ -41,7 +51,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 2:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[1]+=1;
                     }
                     else{
@@ -49,7 +59,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 3:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[2]+=1;
                     }
                     else{
@@ -57,7 +67,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 4:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[3]+=1;
                     }
                     else{
@@ -65,7 +75,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 5:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[4]+=1;
                     }
                     else{
@@ -73,7 +83,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 6:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[5]+=1;
                     }
                     else{
@@ -81,7 +91,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 7:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[6]+=1;
                     }
                     else{
@@ -89,7 +99,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 8:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[7]+=1;
                     }
                     else{
@@ -97,7 +107,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 9:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[8]+=1;
                     }
                     else{
@@ -105,7 +115,7 @@ public class FrequencyTable {
                     }
                     break;
                 case 10:
-                    if(cases[i] == 4){
+                    if(cases[i] == 2){
                         this.negativeValues[9]+=1;
                     }
                     else{
@@ -151,6 +161,4 @@ public class FrequencyTable {
         this.total = total;
     }
     
-    
-
 }
