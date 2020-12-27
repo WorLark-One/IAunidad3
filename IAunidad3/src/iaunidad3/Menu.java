@@ -17,12 +17,18 @@ public class Menu {
     private Scanner reader = new Scanner(System.in);
     private NaiveBayes naiveBayes;
     public Menu() throws FileNotFoundException {
+        //create an instance of the NaiveBayes class and create the tables
         this.naiveBayes = new NaiveBayes();
         this.naiveBayes.createTables();
+        //initialize the menu
         this.menuOfOptions();
     }
     
     private void menuOfOptions(){
+        //create 3 options to the user
+        //1: show the frequency tables
+        //2: calculate probability of being a positive case
+        //3: exit
         boolean flag = true;
         boolean flag2 = false;
         boolean flag3 = false;
@@ -81,6 +87,7 @@ public class Menu {
     }
     
     private void breastCancerScreeningTest(){
+        //Ask for the probability, given the specific input 
         System.out.println("");
         System.out.println("--------- Breast Cancer Screening Test ---------");
         int[] arrayAttributes = new int[10];

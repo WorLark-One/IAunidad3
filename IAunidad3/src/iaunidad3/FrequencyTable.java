@@ -5,18 +5,17 @@
  */
 package iaunidad3;
 
-import java.text.DecimalFormat;
-
 /**
  *
  * @author PinkyStyle
  */
 public class FrequencyTable {
 
+    //Name of the table/variable
     private String name;
-    // Quantity of cases that have breast cancer
+    // Quantity of cases that have breast cancer, given the specific value (position 0 value 1, position 1 value 2, ..., position 9 value 10)
     private int[] positiveValues;
-    // Quantity of cases that do not have breast cancer
+    // Quantity of cases that do not have breast cancer, given the specific value (position 0 value 1, position 1 value 2, ..., position 9 value 10)
     private int[] negativeValues;
     private int total;
 
@@ -29,17 +28,16 @@ public class FrequencyTable {
     }
 
     public String getProbability(int value){  
-        System.out.println("pos: "+this.positiveValues[value-1]);
-        //System.out.println(this.negativeValues[value-1]);
-        System.out.println("sum: "+(this.positiveValues[value-1]+this.negativeValues[value-1]));
+        //We calculate the pobability of being a positive case, given a specific value for the variable and return it
         double x = (double) this.positiveValues[value-1]/(this.positiveValues[value-1]+this.negativeValues[value-1]) ;
         String valor = Double.toString(x);
-        // System.out.println("va:"+ x);
-        // System.out.println("String:"+Double.toString(x));
         return valor;
     }
 
     public void populateTable(double[] data, double[] cases){
+        //To populate the table, we first filter with the specific value of the variable to determinate the position
+        //Then, we ask if it's a positive/negative case.
+        //Depending of this, we add +1 to the specific position, on the specific list.
         for( int i = 0; i < data.length; i++){
             switch( (int)data[i]){
                 case 1:
@@ -128,6 +126,8 @@ public class FrequencyTable {
             this.total+=1;
         }
     }
+
+    //GETTERS AND SETTERS
 
     public String getName() {
         return name;

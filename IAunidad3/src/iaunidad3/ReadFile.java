@@ -30,6 +30,8 @@ public class ReadFile {
     }
     
     private void readFile(String nameFile) throws FileNotFoundException{
+        //try to read the file
+        //if it is readable, then split every line al store the value in their specific list
         try {
             Scanner file = new Scanner(new File(nameFile));
             int counter = 0;
@@ -53,6 +55,8 @@ public class ReadFile {
             System.out.println("Error reading from file");
         }
     }
+
+    //GETTERS AND SETTERS
 
     public double[] getClumpThickness() {
         return clumpThickness;

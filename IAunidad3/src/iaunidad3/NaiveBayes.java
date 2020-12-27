@@ -18,11 +18,14 @@ public class NaiveBayes {
     private ArrayList<FrequencyTable> tables;
 
     public NaiveBayes() throws FileNotFoundException {
+        //Create a Reader object and give it the dataset.
         this.reader = new ReadFile("breast-cancer-wisconsin.data");
+        //Initialize the List
         this.tables = new ArrayList<>();
     }
 
     public void createTables(){
+        //Create the different tables for each variable
         FrequencyTable clumpThickness = new FrequencyTable("Clump Thickness", this.reader.getClumpThickness(), this.reader.getClasses());
         FrequencyTable uniformityOfCellSize  = new FrequencyTable("Uniformity of Cell Size", this.reader.getUniformityOfCellSize(), this.reader.getClasses());
         FrequencyTable uniformityOfCellShape  = new FrequencyTable("Uniformity of Cell Shape", this.reader.getUniformityOfCellShape(), this.reader.getClasses());
@@ -33,6 +36,7 @@ public class NaiveBayes {
         FrequencyTable normalNucleoli  = new FrequencyTable("Normal Nucleoli", this.reader.getNormalNucleoli(), this.reader.getClasses());
         FrequencyTable mitoses = new FrequencyTable("Mitoses", this.reader.getMitoses(), this.reader.getClasses());
 
+        //Store the tables in a List to make them easy to manage
         this.tables.add(clumpThickness);
         this.tables.add(uniformityOfCellSize);
         this.tables.add(uniformityOfCellShape);
@@ -45,17 +49,18 @@ public class NaiveBayes {
     }
 
     public double calculateProbability(int[] newData){
+        //Calculate the probability for each variable and then return the final result
         double result = 0;
         for(int i = 0; i < this.tables.size(); i++){
             String prob = this.tables.get(i).getProbability(newData[i]);
             double x = Double.parseDouble(prob);
             result +=x/9;
-            //System.out.println("llega:"+x);
-            //System.out.println(x);
         }
         return result;
     }
 
+    //GETTERS AND SETTERS
+    
     public ReadFile getReader() {
         return reader;
     }
@@ -71,8 +76,4 @@ public class NaiveBayes {
     public void setTables(ArrayList<FrequencyTable> tables) {
         this.tables = tables;
     }
-    
-    
-
-
 }
