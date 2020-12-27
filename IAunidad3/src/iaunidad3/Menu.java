@@ -108,9 +108,9 @@ public class Menu {
             int numberAux = Integer.parseInt(number);
             arrayAttributes[i]=numberAux;
         }
-        double result = this.naiveBayes.calculateProbability(arrayAttributes);
-        
-        System.out.println("Probability: "+result);
+        String result = this.naiveBayes.calculateProbability(arrayAttributes);
+        double resultValue = Double.parseDouble(result);
+        System.out.println("Probability: "+String.format("%.2f",resultValue*100)+"%");
     }
     
     private void printAttributeEnter(int counter){

@@ -30,6 +30,10 @@ public class FrequencyTable {
     public String getProbability(int value){  
         //We calculate the pobability of being a positive case, given a specific value for the variable and return it
         double x = (double) this.positiveValues[value-1]/(this.positiveValues[value-1]+this.negativeValues[value-1]) ;
+        //if the frequency is not a number (for example we have 0 cases with a specific value) we replace the probability with 0
+        if(Double.isNaN(x)){
+            x = 0;
+        }
         String valor = Double.toString(x);
         return valor;
     }

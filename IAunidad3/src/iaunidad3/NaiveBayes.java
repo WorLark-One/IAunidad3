@@ -48,7 +48,7 @@ public class NaiveBayes {
         this.tables.add(mitoses);
     }
 
-    public double calculateProbability(int[] newData){
+    public String calculateProbability(int[] newData){
         //Calculate the probability for each variable and then return the final result
         double result = 0;
         for(int i = 0; i < this.tables.size(); i++){
@@ -56,7 +56,7 @@ public class NaiveBayes {
             double x = Double.parseDouble(prob);
             result +=x/9;
         }
-        return result;
+        return Double.toString(result);
     }
 
     //GETTERS AND SETTERS
